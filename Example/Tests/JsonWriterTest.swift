@@ -80,7 +80,7 @@ class JsonWriterTest: QuickSpec {
         }
         
         it("should write NSDate values"){
-            let date = NSDate()
+            let date = Date()
 
             let jw = JsonWriter(outputStream: MemOutputStream())
             
@@ -88,7 +88,7 @@ class JsonWriterTest: QuickSpec {
             jw.writeField("a", value: date)
             jw.writeEndObject()
             
-            let milisecondDate = NSNumber(double:date.timeIntervalSince1970*1000)
+            let milisecondDate = NSNumber(value: date.timeIntervalSince1970*1000 as Double)
             expect(jw.getJsonString()) == "{\"a\":\(milisecondDate)}"
         }
         
@@ -99,7 +99,7 @@ class JsonWriterTest: QuickSpec {
             jw.writeStartObject()
             jw.writeField("a", value: nil as NSNumber!)
             jw.writeField("b", value: nil as String!)
-            jw.writeField("c", value: nil as NSDate!)
+            jw.writeField("c", value: nil as Date!)
             jw.writeField("e", value: nil as Bool!)
             jw.writeEndObject()
             
@@ -121,8 +121,8 @@ class JsonWriterTest: QuickSpec {
 
             let jw = JsonWriter(outputStream: MemOutputStream())
             
-            let date = NSDate()
-            let jsonDate = NSNumber(double:date.timeIntervalSince1970*1000)
+            let date = Date()
+            let jsonDate = NSNumber(value: date.timeIntervalSince1970*1000 as Double)
             
             let dict: Dictionary<String, AnyObject> =  ["a":"b", "d":date]
 
@@ -179,8 +179,8 @@ class JsonWriterTest: QuickSpec {
         
         it ("should write dict with sub array") {
             
-            let date = NSDate()
-            let jsonDate = NSNumber(double:date.timeIntervalSince1970*1000)
+            let date = Date()
+            let jsonDate = NSNumber(value: date.timeIntervalSince1970*1000 as Double)
             
             let jw = JsonWriter(outputStream: MemOutputStream())
             

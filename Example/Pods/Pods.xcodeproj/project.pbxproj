@@ -17,7 +17,6 @@
 		1B39E248E790BCED2E47B22A615333FF /* HealthKitDataImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE217CBE45F36BFBFB00395B0C116120 /* HealthKitDataImporter.swift */; };
 		1B7D8B785FC5302FA552C87E439A8D25 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B35D4EA6471948D6C91A7FDE6F47D5 /* QuickConfiguration.m */; };
 		1B97CD23B61DEA10E88769F3B1EE578D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD400FBF5D623D08667E12C2A5949F /* Util.swift */; };
-		1D0E73C4F4BDE8D75036C2FFF989C3A3 /* HealthKitSampleGenerator.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D1DC8F50B9C12FC5068F88985400C2BF /* HealthKitSampleGenerator.bundle */; };
 		1E608EAF8009FC82D841B180F7C6793A /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9E62B60B72E1688DB605366DA964A /* NMBExceptionCapture.m */; };
 		1EB0395E90DC786D257E35F4BB737D6B /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB2573055CDD988719A774B9A78C2B2 /* EndWith.swift */; };
 		1FE799F6E3BF45982DEB8D03BD84D125 /* World.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2314F9D831C73EA35E0E19E09E97C2 /* World.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -108,13 +107,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1CE9395D94CD6C0449A75CD88233614D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE41A0B9AA44F0C3A741AF9CD922D612;
-			remoteInfo = "HealthKitSampleGenerator-HealthKitSampleGenerator";
-		};
 		3090B5B7E4C542701CF75783CACD50CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -255,7 +247,6 @@
 		CDAB173328DCC7344CE320F9B0EA96D3 /* ExportConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExportConfiguration.swift; sourceTree = "<group>"; };
 		D1577FF53CF0CE7F1C287BB55F0DA509 /* ObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjCMatcher.swift; path = Nimble/Wrappers/ObjCMatcher.swift; sourceTree = "<group>"; };
 		D1D6AE8CF6D24D4020AF1545FBF314AC /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
-		D1DC8F50B9C12FC5068F88985400C2BF /* HealthKitSampleGenerator.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HealthKitSampleGenerator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2FC6DDA74F238B17F46BC8E4AB02863 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		D4CE2926E22543AE2A5A2BD8EBA1444E /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Quick/DSL/DSL.swift; sourceTree = "<group>"; };
 		D97656C1C2771474F6A2D4DA5967D6B6 /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
@@ -298,13 +289,6 @@
 			files = (
 				F5F04D976C55DBA3A8DD2F1E2EF2B8C1 /* Foundation.framework in Frameworks */,
 				3BA9C7629BFEF8254D3BF091D028D464 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53EC7192AEE59C66BADB1AFF3AB0F7B6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +601,6 @@
 		E9BFE82E77C37F01B66702BCDF3E6C6F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D1DC8F50B9C12FC5068F88985400C2BF /* HealthKitSampleGenerator.bundle */,
 				CC00BC5138948EA7BF41D86A898DC98D /* HealthKitSampleGenerator.framework */,
 				06DED06545D9AACEE3872300E5A2B919 /* Nimble.framework */,
 				A52991290649BB41FA1E41AD7DE179FB /* Pods_HealthKitSampleGenerator_Example.framework */,
@@ -732,7 +715,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5393EBB40BD201D15B524337F93408BD /* PBXTargetDependency */,
 			);
 			name = HealthKitSampleGenerator;
 			productName = HealthKitSampleGenerator;
@@ -774,23 +756,6 @@
 			productReference = 06DED06545D9AACEE3872300E5A2B919 /* Nimble.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CE41A0B9AA44F0C3A741AF9CD922D612 /* HealthKitSampleGenerator-HealthKitSampleGenerator */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D80E049CC3F173CE476968CF5511B01F /* Build configuration list for PBXNativeTarget "HealthKitSampleGenerator-HealthKitSampleGenerator" */;
-			buildPhases = (
-				AF01559EE7C2D98327A9A92B48C70D16 /* Sources */,
-				53EC7192AEE59C66BADB1AFF3AB0F7B6 /* Frameworks */,
-				2530B7D677E9CF89C50026A77B9D8DD9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "HealthKitSampleGenerator-HealthKitSampleGenerator";
-			productName = "HealthKitSampleGenerator-HealthKitSampleGenerator";
-			productReference = D1DC8F50B9C12FC5068F88985400C2BF /* HealthKitSampleGenerator.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -799,6 +764,23 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0710;
+				TargetAttributes = {
+					68536CFD0F3A9676D8F9016A4D3AF16C = {
+						LastSwiftMigration = 0830;
+					};
+					8849EF21BC824D03AA41F5ED190F3DDE = {
+						LastSwiftMigration = 0830;
+					};
+					9DB05EFC751028DD93CF970F1102971B = {
+						LastSwiftMigration = 0830;
+					};
+					AA9FEF2B832A46B4168C3A5DF734EA03 = {
+						LastSwiftMigration = 0830;
+					};
+					AE4F696CC357FA27AC16FF75A72C8C40 = {
+						LastSwiftMigration = 0830;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -813,7 +795,6 @@
 			projectRoot = "";
 			targets = (
 				9DB05EFC751028DD93CF970F1102971B /* HealthKitSampleGenerator */,
-				CE41A0B9AA44F0C3A741AF9CD922D612 /* HealthKitSampleGenerator-HealthKitSampleGenerator */,
 				AE4F696CC357FA27AC16FF75A72C8C40 /* Nimble */,
 				AA9FEF2B832A46B4168C3A5DF734EA03 /* Pods-HealthKitSampleGenerator_Example */,
 				68536CFD0F3A9676D8F9016A4D3AF16C /* Pods-HealthKitSampleGenerator_Tests */,
@@ -823,18 +804,10 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2530B7D677E9CF89C50026A77B9D8DD9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A7B2CFF177F60651F072E761E7A31202 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0E73C4F4BDE8D75036C2FFF989C3A3 /* HealthKitSampleGenerator.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,13 +916,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF01559EE7C2D98327A9A92B48C70D16 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AF70BE4247096082FCC712E989618E88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -966,12 +932,6 @@
 			name = Quick;
 			target = 8849EF21BC824D03AA41F5ED190F3DDE /* Quick */;
 			targetProxy = 789AFF65D6A4444CB61DE97E7F25B004 /* PBXContainerItemProxy */;
-		};
-		5393EBB40BD201D15B524337F93408BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "HealthKitSampleGenerator-HealthKitSampleGenerator";
-			target = CE41A0B9AA44F0C3A741AF9CD922D612 /* HealthKitSampleGenerator-HealthKitSampleGenerator */;
-			targetProxy = 1CE9395D94CD6C0449A75CD88233614D /* PBXContainerItemProxy */;
 		};
 		8A46DCDD4BE9084A7284196585B8D168 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1055,22 +1015,10 @@
 				PRODUCT_NAME = Pods_HealthKitSampleGenerator_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4716F76EF0F341E866B5EC5EB9642CD5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A67AB7515622C4C1A2D2E316138980F0 /* HealthKitSampleGenerator.xcconfig */;
-			buildSettings = {
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = HealthKitSampleGenerator;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -1101,6 +1049,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1130,6 +1079,7 @@
 				PRODUCT_NAME = HealthKitSampleGenerator;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1163,6 +1113,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1233,24 +1184,12 @@
 				PRODUCT_NAME = Quick;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		98D10C1400C027AD4FAACBF9A7B04CE2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A67AB7515622C4C1A2D2E316138980F0 /* HealthKitSampleGenerator.xcconfig */;
-			buildSettings = {
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = HealthKitSampleGenerator;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		AC917B38D2CAADFF4A543A8D3E12A520 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1274,6 +1213,7 @@
 				PRODUCT_NAME = Nimble;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1304,6 +1244,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1333,6 +1274,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1365,6 +1307,7 @@
 				PRODUCT_NAME = Pods_HealthKitSampleGenerator_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1395,6 +1338,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1436,15 +1380,6 @@
 			buildConfigurations = (
 				4AD889D62EF56E26F2E7A77A9F04B1AC /* Debug */,
 				1B9F081F009760216AA36D809D257FA7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D80E049CC3F173CE476968CF5511B01F /* Build configuration list for PBXNativeTarget "HealthKitSampleGenerator-HealthKitSampleGenerator" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				98D10C1400C027AD4FAACBF9A7B04CE2 /* Debug */,
-				4716F76EF0F341E866B5EC5EB9642CD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

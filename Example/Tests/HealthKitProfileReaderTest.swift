@@ -20,7 +20,7 @@ class HealthKitProfileReaderTest: QuickSpec {
         
         describe("Read and Manage Profile Data on disk") {
             
-            let pathUrl = NSBundle(forClass: self.dynamicType).bundleURL
+            let pathUrl = Bundle(for: type(of: self)).bundleURL
             let profiles = HealthKitProfileReader.readProfilesFromDisk(pathUrl)
             
             it("should create an array of profiles"){
@@ -33,7 +33,7 @@ class HealthKitProfileReaderTest: QuickSpec {
             it("should read the profile metadata"){
                 let profile = profiles[0]
                 
-                let testDate = NSDate(timeIntervalSince1970: 1446486924969.067/1000 )
+                let testDate = Date(timeIntervalSince1970: 1446486924969.067/1000 )
                 
                 profile.loadMetaData(false){ (metaData:HealthKitProfileMetaData) in
                     expect(metaData.creationDate) == testDate

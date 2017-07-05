@@ -26,10 +26,10 @@ class JsonReaderTest: QuickSpec {
                     override func startObject(){super.startObject(); functionCalled.insert("c")}
                     override func endObject(){super.endObject(); functionCalled.insert("d")}
                     
-                    override func name(name: String){super.name(name); functionCalled.insert("e")}
-                    override func stringValue(value: String){super.stringValue(value); functionCalled.insert("f")}
-                    override func boolValue(value: Bool){super.boolValue(value); functionCalled.insert("g")}
-                    override func numberValue(value: NSNumber){super.numberValue(value); functionCalled.insert("h")}
+                    override func name(_ name: String){super.name(name); functionCalled.insert("e")}
+                    override func stringValue(_ value: String){super.stringValue(value); functionCalled.insert("f")}
+                    override func boolValue(_ value: Bool){super.boolValue(value); functionCalled.insert("g")}
+                    override func numberValue(_ value: NSNumber){super.numberValue(value); functionCalled.insert("h")}
                     override func nullValue(){super.nullValue(); functionCalled.insert("i")}
                 }
                 
@@ -76,8 +76,8 @@ class JsonReaderTest: QuickSpec {
             }
 
             it("should read NSDate time values"){
-                let date = NSDate()
-                let milisecondDate = NSNumber(double:date.timeIntervalSince1970*1000)
+                let date = Date()
+                let milisecondDate = NSNumber(value: date.timeIntervalSince1970*1000 as Double)
                 self.test(tokenizer, jsonStringOutputHandler: jsonStringOutputHandler, jsonString: "{\"a\":\(milisecondDate)}")
             }
 
@@ -155,7 +155,7 @@ class JsonReaderTest: QuickSpec {
         }
     }
     
-    internal func test(tokenizer:JsonTokenizer!, jsonStringOutputHandler:JsonStringOutputJsonHandler!, jsonString: String) {
+    internal func test(_ tokenizer:JsonTokenizer!, jsonStringOutputHandler:JsonStringOutputJsonHandler!, jsonString: String) {
         tokenizer.tokenize(jsonString)
         expect(jsonStringOutputHandler.json) == jsonString
     }

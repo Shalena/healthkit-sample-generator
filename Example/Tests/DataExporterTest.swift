@@ -69,7 +69,7 @@ class DataExporterTest: QuickSpec {
                 let bloodType           = userDataDict[HealthKitConstants.BLOOD_TYPE] as? Int
                 let fitzpatrickSkinType = userDataDict[HealthKitConstants.FITZPATRICK_SKIN_TYPE] as? Int
                 
-                let date = NSDate(timeIntervalSince1970: (dateOfBirth?.doubleValue)! / 1000.0)
+                let date = Date(timeIntervalSince1970: (dateOfBirth?.doubleValue)! / 1000.0)
                 
                 expect(try! self.healthStore.dateOfBirth())  == date
                 
@@ -82,9 +82,9 @@ class DataExporterTest: QuickSpec {
         
         describe("QuantityType Exports") {
         
-            let type  = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+            let type  = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
             let strUnit = "kg"
-            let unit = HKUnit(fromString: strUnit)
+            let unit = HKUnit(from: strUnit)
             
             let exporter = QuantityTypeDataExporter(exportConfiguration: exportConfiguration, type: type, unit: unit)
             
@@ -95,9 +95,9 @@ class DataExporterTest: QuickSpec {
                 
                 target.startWriteType(type)
                 
-                let date = NSDate()
+                let date = Date()
                 let quantity = HKQuantity(unit: unit, doubleValue: 70)
-                let sample = HKQuantitySample(type: type, quantity: quantity, startDate: date, endDate: date)
+                let sample = HKQuantitySample(type: type, quantity: quantity, start: date, end: date)
                 
                 exporter.writeResults([sample], exportTargets: [target], error: nil)
 
@@ -105,7 +105,7 @@ class DataExporterTest: QuickSpec {
                 
                 target.endExport()
                 
-                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKQuantityTypeIdentifierBodyMass))
+                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKQuantityTypeIdentifier.bodyMass))
                 
                 
                 expect(dataArray.count) == 1
@@ -137,7 +137,7 @@ class DataExporterTest: QuickSpec {
     
         describe("CategoryTypeDataExporter") {
             
-            let type = HKObjectType.categoryTypeForIdentifier(HKCategoryTypeIdentifierAppleStandHour)!
+            let type = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!
             
             let exporter = CategoryTypeDataExporter(exportConfiguration: exportConfiguration, type: type)
             
@@ -147,9 +147,9 @@ class DataExporterTest: QuickSpec {
                 target.startExport()
                 target.startWriteType(type)
                 
-                let date = NSDate()
+                let date = Date()
                 
-                let sample = HKCategorySample(type: type, value: 1, startDate: date, endDate: date)
+                let sample = HKCategorySample(type: type, value: 1, start: date, end: date)
                 
                 exporter.writeResults([sample], exportTargets: [target], error: nil)
                 
@@ -157,7 +157,7 @@ class DataExporterTest: QuickSpec {
                 
                 target.endExport()
                 
-                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKCategoryTypeIdentifierAppleStandHour))
+                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKCategoryTypeIdentifier.appleStandHour))
                 
                 expect(dataArray.count) == 1
                 
@@ -183,11 +183,11 @@ class DataExporterTest: QuickSpec {
         }
         
         describe("CorrelationTypeDataExporter") {
-            let unit = HKUnit(fromString: "mmHg")
-            let type1 = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodPressureSystolic)!
-            let type2 = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodPressureDiastolic)!
+            let unit = HKUnit(from: "mmHg")
+            let type1 = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!
+            let type2 = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!
             
-            let type = HKObjectType.correlationTypeForIdentifier(HKCorrelationTypeIdentifierBloodPressure)!
+            let type = HKObjectType.correlationType(forIdentifier: HKCorrelationTypeIdentifier.bloodPressure)!
             let exporter = CorrelationTypeDataExporter(exportConfiguration: exportConfiguration, type: type, typeMap:[type1:unit,type2:unit])
             
             it ("should export correlation types") {
@@ -200,14 +200,14 @@ class DataExporterTest: QuickSpec {
                 let quantity1 = HKQuantity(unit: unit, doubleValue: 80)
                 let quantity2 = HKQuantity(unit: unit, doubleValue: 120)
                 
-                let date = NSDate()
+                let date = Date()
                 
                 let samples: [HKSample] = [
-                    HKQuantitySample(type: type1, quantity: quantity1, startDate: date, endDate: date),
-                    HKQuantitySample(type: type2, quantity: quantity2, startDate: date, endDate: date)
+                    HKQuantitySample(type: type1, quantity: quantity1, start: date, end: date),
+                    HKQuantitySample(type: type2, quantity: quantity2, start: date, end: date)
                 ]
 
-                let correlation = HKCorrelation(type: type, startDate: date, endDate: date, objects: Set(samples))
+                let correlation = HKCorrelation(type: type, start: date, end: date, objects: Set(samples))
                 
                 exporter.writeResults([correlation], exportTargets: [target], error: nil)
 
@@ -215,7 +215,7 @@ class DataExporterTest: QuickSpec {
                 
                 target.endExport()
                 
-                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKCorrelationTypeIdentifierBloodPressure))
+                let dataArray = JsonReader.toJsonObject(target.getJsonString(), returnArrayForKey:String(HKCorrelationTypeIdentifier.bloodPressure))
                 
                 expect(dataArray.count) == 1
                 
@@ -253,16 +253,16 @@ class DataExporterTest: QuickSpec {
             let exporter = WorkoutDataExporter(exportConfiguration: exportConfiguration)
             
             it("should export workouts"){
-                let start = NSDate()
-                let pause = start.dateByAddingTimeInterval(60*2) // + 2 minutes
-                let resume = start.dateByAddingTimeInterval(60*3) // + 3 minutes
-                let end = start.dateByAddingTimeInterval(60*10) // + 10 minutes
+                let start = Date()
+                let pause = start.addingTimeInterval(60*2) // + 2 minutes
+                let resume = start.addingTimeInterval(60*3) // + 3 minutes
+                let end = start.addingTimeInterval(60*10) // + 10 minutes
                 
-                let events : [HKWorkoutEvent] = [HKWorkoutEvent(type: HKWorkoutEventType.Pause, date: pause), HKWorkoutEvent(type: HKWorkoutEventType.Resume, date: resume)]
-                let burned = HKQuantity(unit: HKUnit(fromString: "kcal"), doubleValue: 200.6)
-                let distance = HKQuantity(unit: HKUnit(fromString: "km"), doubleValue: 4.5)
+                let events : [HKWorkoutEvent] = [HKWorkoutEvent(type: HKWorkoutEventType.pause, date: pause), HKWorkoutEvent(type: HKWorkoutEventType.resume, date: resume)]
+                let burned = HKQuantity(unit: HKUnit(from: "kcal"), doubleValue: 200.6)
+                let distance = HKQuantity(unit: HKUnit(from: "km"), doubleValue: 4.5)
                 
-                let workout = HKWorkout(activityType: HKWorkoutActivityType.Running, startDate: start, endDate: end, workoutEvents: events, totalEnergyBurned: burned, totalDistance: distance, metadata: nil)
+                let workout = HKWorkout(activityType: HKWorkoutActivityType.running, start: start, end: end, workoutEvents: events, totalEnergyBurned: burned, totalDistance: distance, metadata: nil)
                 
                 let target = JsonSingleDocInMemExportTarget()
                 target.startExport()
